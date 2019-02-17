@@ -10,9 +10,9 @@ CYRTextView
 
 |  | Status | 
 | :------ | :------: | 
-| ![mac](https://badgen.net/badge//iOS?icon=apple&color=purple&list=1) | [![Build Status](https://dev.azure.com/Codefoco/CYRTextView/_apis/build/status/Codefoco-CYRTextView?branchName=master)](https://dev.azure.com/Codefoco/CYRTextView/_build/latest?definitionId=2&branchName=master) |
+| ![mac](https://badgen.net/badge//iOS?icon=apple&color=purple&list=1) | [![Build Status](https://dev.azure.com/NLua/NLua/_apis/build/status/Codefoco.CYRTextView?branchName=master)](https://dev.azure.com/NLua/NLua/_build/latest?definitionId=9&branchName=master) |
 
-Xamarin.iOS Binding for CYRTextView
+Xamarin.iOS Binding for [CYRTextView](https://github.com/codefoco-forks/CYRTextView)
 
 Building
 ---------
