@@ -1,0 +1,3 @@
+[submodule "external/CYRTextView"]
+	path = external/CYRTextView
+	url = git@github.com:codefoco-forks/CYRTextView

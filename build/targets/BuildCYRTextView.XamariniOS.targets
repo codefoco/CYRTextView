@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <iOSBuildDir>ios_build</iOSBuildDir>
+        <iOSOutputDir>ios</iOSOutputDir>
+        <DylibFileFramework>libCYRTextView.framework</DylibFileFramework>
+        <OutputRuntimeDir>$(SolutionDir)runtimes</OutputRuntimeDir>
+    </PropertyGroup>
+    <Target Name="BuildCYRTextViewXamariniOS" BeforeTargets="PrepareForBuild" Condition="'$(OS)'=='Unix' and Exists('/usr/lib/libc.dylib')" >
+        <Message Text="Building iOS CYRTextView library (arm64/x86_64)" />
+        <Exec Command="make ios" WorkingDirectory="$(SolutionDir)\$(iOSBuildDir)" />
+        <Exec Command="ditto $(SolutionDir)\$(iOSBuildDir)\$(iOSOutputDir)\$(DylibFileFramework) $(OutputRuntimeDir)\$(iOSOutputDir)\$(DylibFileFramework)"  />
+    </Target>
+    <Target Name="CleanCYRTextViewXamariniOS" AfterTargets="Clean" Condition="'$(OS)'=='Unix' and Exists('/usr/lib/libc.dylib')" >
+        <Message Text="Cleaning CYRTextView library (iOS)" />
+        <RemoveDir Directories="
+        $(SolutionDir)\$(iOSBuildDir)\$(iOSOutputDir); 
+        $(OutputRuntimeDir)\$(iOSOutputDir) " />
+    </Target>
+</Project>
+
