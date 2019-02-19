@@ -1,0 +1,12 @@
+.vs
+.DS_Store
+build
+CYRTextViewExample/bin
+CYRTextViewExample/obj
+contents.xcworkspacedata
+ios_build/CYRTextView.xcodeproj/project.xcworkspace
+ios_build/CYRTextView.xcodeproj/xcshareddata
+ios_build/CYRTextView.xcodeproj/xcuserdata
+ios_build/DerivedData
+lib/Debug
+lib/Release
