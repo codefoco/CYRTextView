@@ -117,6 +117,9 @@ namespace CYRTextViewKit
 
         [Export("initWithFrame:")]
         IntPtr Constructor(CGRect frame);
+
+        [Export("copyTextViewProperties:")]
+        void CopyProperties(UITextView textView);
     }
 
 }

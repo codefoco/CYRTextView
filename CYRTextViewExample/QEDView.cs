@@ -25,7 +25,9 @@ namespace CYRTextViewExample
         [Export("awakeAfterUsingCoder:")]
         public NSObject AwakeAfterUsingCoder (NSCoder aDecoder)
         {
-            return new QEDView(Frame);
+            QEDView view = new QEDView(Frame);
+            view.CopyProperties(this);
+            return view;
         }
 
 
