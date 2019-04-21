@@ -3,8 +3,8 @@ pool:
   demands: msbuild
 
 steps:
-  - checkout: self 
-    submodules: true
+- checkout: self 
+  submodules: true
 
 - task: NuGetCommand@2
   displayName: 'NuGet restore'
