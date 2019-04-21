@@ -6,6 +6,15 @@ steps:
 - checkout: self 
   submodules: true
 
+
+- task: CmdLine@2
+  inputs:
+    script: '/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/bin/mtouch --version'
+
+- task: CmdLine@2
+  inputs:
+    script: '/usr/bin/xcodebuild -version'
+
 - task: NuGetCommand@2
   displayName: 'NuGet restore'
 
