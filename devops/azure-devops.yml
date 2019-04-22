@@ -11,7 +11,7 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: '/usr/bin/ls /Library/Frameworks/Xamarin.iOS.framework/Versions/'
+    script: '/bin/ls /Library/Frameworks/Xamarin.iOS.framework/Versions/'
 
 - task: CmdLine@2
   inputs:
