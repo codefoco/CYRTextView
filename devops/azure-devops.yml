@@ -8,74 +8,61 @@ steps:
 
 # Azure DevOps hosted pool is still using an old version of Xamarin.iOS, 
 # so we will use the previous major version of Xcode
-
 - task: CmdLine@2
   inputs:
     script: 'sudo rm -rf /Applications/Xcode.app/;
              sudo /bin/mv /Applications/Xcode_9.4.1.app/ /Applications/Xcode.app/'
 
+# Print the current version of Xamarin.iOS
 - task: CmdLine@2
   inputs:
-    script: '/Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -version'
+    script: '/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/bin/mtouch --version'
 
-- task: CmdLine@2
+- task: NuGetCommand@2
+  displayName: 'NuGet restore'
+
+- script: 'brew update'
+  displayName: 'Brew Update'
+
+- script: 'brew install gitversion --ignore-dependencies'
+  displayName: 'Install GitVersion'
+
+- task: PowerShell@2
+  displayName: 'PreBuild Script'
   inputs:
-    script: '/usr/bin/xcode-select -p'
+    targetType: filePath
+    filePath: ./devops/PreBuild.ps1
+    arguments: 'Codefoco.CYRTextView CYRTextView.nuspec'
 
-# - task: CmdLine@2
-#   inputs:
-#     script: 'sudo /usr/bin/xcode-select -s /Applications/Xcode_9.4.1.app/Contents/Developer'
+- task: MSBuild@1
+  displayName: 'Build solution CYRTextView.sln'
+  inputs:
+    solution: CYRTextView.sln
+    configuration: Release
 
-# # Print the current version of Xamarin.iOS
-# - task: CmdLine@2
-#   inputs:
-#     script: '/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/bin/mtouch --version'
+- script: 'nuget setapikey $(apikey)'
+  displayName: 'Set NuGet API Key'
 
-# - task: NuGetCommand@2
-#   displayName: 'NuGet restore'
+- task: PowerShell@2
+  displayName: 'Package NuGet'
+  inputs:
+    targetType: filePath
+    filePath: ./devops/Package.ps1
+    arguments: 'Codefoco.CYRTextView CYRTextView.nuspec'
 
-# - script: 'brew update'
-#   displayName: 'Brew Update'
+- script: 'mv *.nupkg Codefoco.CYRTextview.nupkg'
+  displayName: 'Rename NuGet package'
 
-# - script: 'brew install gitversion --ignore-dependencies'
-#   displayName: 'Install GitVersion'
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Codefoco.CYRTextview.nupkg Artifact'
+  inputs:
+    PathtoPublish: Codefoco.CYRTextview.nupkg
+    ArtifactName: Codefoco.CYRTextview.nupkg
 
-# - task: PowerShell@2
-#   displayName: 'PreBuild Script'
-#   inputs:
-#     targetType: filePath
-#     filePath: ./devops/PreBuild.ps1
-#     arguments: 'Codefoco.CYRTextView CYRTextView.nuspec'
-
-# - task: MSBuild@1
-#   displayName: 'Build solution CYRTextView.sln'
-#   inputs:
-#     solution: CYRTextView.sln
-#     configuration: Release
-
-# - script: 'nuget setapikey $(apikey)'
-#   displayName: 'Set NuGet API Key'
-
-# - task: PowerShell@2
-#   displayName: 'Package NuGet'
-#   inputs:
-#     targetType: filePath
-#     filePath: ./devops/Package.ps1
-#     arguments: 'Codefoco.CYRTextView CYRTextView.nuspec'
-
-# - script: 'mv *.nupkg Codefoco.CYRTextview.nupkg'
-#   displayName: 'Rename NuGet package'
-
-# - task: PublishBuildArtifacts@1
-#   displayName: 'Publish Codefoco.CYRTextview.nupkg Artifact'
-#   inputs:
-#     PathtoPublish: Codefoco.CYRTextview.nupkg
-#     ArtifactName: Codefoco.CYRTextview.nupkg
-
-# - task: PowerShell@2
-#   displayName: 'Publish NuGet'
-#   inputs:
-#     targetType: filePath
-#     filePath: ./devops/Publish.ps1
-#     arguments: Codefoco.CYRTextView
+- task: PowerShell@2
+  displayName: 'Publish NuGet'
+  inputs:
+    targetType: filePath
+    filePath: ./devops/Publish.ps1
+    arguments: Codefoco.CYRTextView
 
