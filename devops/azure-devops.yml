@@ -11,15 +11,8 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: '/bin/ls /Library/Frameworks/Xamarin.iOS.framework/Versions/'
-
-- task: CmdLine@2
-  inputs:
-    script: 'sudo rm -rf /Applications/Xcode.app/'
-
-- task: CmdLine@2
-  inputs:
-    script: 'sudo /bin/mv /Applications/Xcode_9.4.1.app/ /Applications/Xcode.app/'
+    script: 'sudo rm -rf /Applications/Xcode.app/;
+             sudo /bin/mv /Applications/Xcode_9.4.1.app/ /Applications/Xcode.app/'
 
 - task: CmdLine@2
   inputs:
