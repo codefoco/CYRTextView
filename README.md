@@ -14,6 +14,12 @@ CYRTextView
 
 Xamarin.iOS Binding for [CYRTextView](https://github.com/codefoco-forks/CYRTextView)
 
+Dependencies
+---------
+Before building fetch the submodules:
+
+	git submodule update --init --recursive
+
 Building
 ---------
 
