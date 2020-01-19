@@ -12,7 +12,7 @@ using Foundation;
 [assembly: AssemblyDescription ("Xamarin.iOS Binding for CYRTextView")]
 [assembly: AssemblyCompany ("Codefoco")]
 [assembly: AssemblyProduct ("CYRTextView")]
-[assembly: AssemblyCopyright ("Copyright © Vinicius Jarina 2019")]
+[assembly: AssemblyCopyright ("Copyright © Vinicius Jarina 2020")]
 [assembly: AssemblyCulture ("")]
 
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".

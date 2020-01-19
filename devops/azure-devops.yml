@@ -18,8 +18,8 @@ steps:
   displayName: 'Provisioning Xamarin.iOS'
   inputs:
     script: 'cd ~;
-            curl -O https://download.visualstudio.microsoft.com/download/pr/d11a42ff-dd11-4005-b5a8-799856a96aad/2893a2da0df8a2e2d45ea17e2be2ccce/xamarin.ios-13.4.0.2.pkg;
-            sudo installer -pkg ~/xamarin.ios-13.4.0.2.pkg -target /'
+            curl -O https://download.visualstudio.microsoft.com/download/pr/fc059472-448e-4680-a3cd-e3ba032991c2/5e6c319f2c189459903c2cb1aa8a69ee/xamarin.ios-13.10.0.17.pkg;
+            sudo installer -pkg ~/xamarin.ios-13.10.0.17 -target /'
 
 # Print the current version of Xamarin.iOS
 - task: CmdLine@2
