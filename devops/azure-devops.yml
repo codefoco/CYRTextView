@@ -20,12 +20,6 @@ steps:
 - task: NuGetCommand@2
   displayName: 'NuGet restore'
 
-- script: 'brew update'
-  displayName: 'Brew Update'
-
-- script: 'brew install gitversion --ignore-dependencies'
-  displayName: 'Install GitVersion'
-
 - task: PowerShell@2
   displayName: 'PreBuild Script'
   inputs:
